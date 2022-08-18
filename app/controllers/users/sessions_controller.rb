@@ -7,7 +7,11 @@ module Users
     private
 
     def respond_with(_resource, _opt = {})
-      return render json: { message: 'Signed in!' }, status: :ok if current_user
+      if current_user
+        image = current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : ''
+        return render json: { message: 'Signed in!', image: },
+                      status: :ok
+      end
 
       render json: { error: 'Auth error.' }, status: :unauthorized
     end

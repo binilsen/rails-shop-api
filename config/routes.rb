@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  devise_for :users, defaults: { format: :json }, controllers: { sessions: 'users/sessions' }
+  devise_for :users, defaults: { format: :json },
+                     controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   namespace :api do
     namespace :v1 do
       resources :products
