@@ -8,8 +8,8 @@ module Users
 
     def respond_with(_resource, _opt = {})
       if current_user
-        image = current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : ''
-        return render json: { message: 'Signed in!', image: },
+        image = current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : nil
+        return render json: { message: 'Signed in!', image:, username: current_user.email },
                       status: :ok
       end
 
