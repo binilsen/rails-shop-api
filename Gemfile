@@ -20,6 +20,9 @@ gem 'rack-cors'
 # jwt based devise authentication
 gem 'devise-jwt'
 
+# active_storage validator
+gem 'active_storage_validations'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
