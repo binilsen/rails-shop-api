@@ -4,19 +4,13 @@
 class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.order(created_at: :desc)
-    respond_to do |format|
-      format.json { render json: @orders }
-      format.html
-    end
+    render json: @orders
   end
 
   def show
     @order = Order.find(params[:id])
     @cart = @order.orders_products.all
-    respond_to do |format|
-      format.json { render json: @order.as_json(include: %i[products orders_products], root: true) }
-      format.html
-    end
+    render json: @order.as_json(include: %i[products orders_products], root: true)
   end
 
   def buy_now
@@ -29,10 +23,9 @@ class OrdersController < ApplicationController
     get_cart = create_cart
     order = Order.create(user_id: current_user.id, total: get_cart.cart_total)
     add_order_products(get_cart.carts_products, order)
-    flash[:status] = 'Order Successfully Placed.' if get_cart.update(processed: true)
     get_cart.destroy
     session.delete(:cart_id)
-    redirect_to root_path
+    render json: { message: :success }, status: :ok
   end
 
   private

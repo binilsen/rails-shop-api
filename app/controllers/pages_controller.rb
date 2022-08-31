@@ -7,10 +7,7 @@ class PagesController < ApplicationController
 
   def index
     @products = Product.all
-    respond_to do |format|
-      format.json { render json: @products.as_json(include: :unit) }
-      format.html
-    end
+    render json: @products.as_json(include: :unit)
   end
 
   def show

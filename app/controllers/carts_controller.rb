@@ -6,9 +6,6 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     return if @cart.blank? || @cart.carts_products.blank?
 
-    respond_to do |format|
-      format.json { render json: @cart.as_json(include: %i[products carts_products products.unit]) }
-      format.html
-    end
+    render json: @cart.as_json(include: %i[products carts_products])
   end
 end

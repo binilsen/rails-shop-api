@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # base controller
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
   before_action :authenticate_user!
   def create_cart(flag: false)
     if flag
