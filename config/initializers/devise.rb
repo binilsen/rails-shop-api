@@ -13,7 +13,8 @@ Devise.setup do |config|
     jwt.secret = Rails.application.credentials.jwt_key
     jwt.dispatch_requests = [
       ['POST', 'api/users/sign_in'],
-      ['POST', 'api/users']
+      ['POST', 'api/users'],
+      ['POST', 'users/auth/google_oauth2/callback']
     ]
     jwt.revocation_requests = [
       ['POST', 'api/users/sign_in'],
@@ -276,7 +277,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = []
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -284,8 +285,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :google_oauth2, Rails.application.credentials.omniauth[:GOOGLE_CLIENT_ID],
-                  Rails.application.credentials.omniauth[:GOOGLE_CLIENT_SECRET], {}
+  config.omniauth :google_oauth2, Rails.application.credentials.omniauth[:GOOGLE_CLIENT_ID_LOCAL],
+                  Rails.application.credentials.omniauth[:GOOGLE_CLIENT_SECRET_LOCAL], { provider_ignores_state: true }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

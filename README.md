@@ -1,6 +1,4 @@
-# Rails Shop App
-
-Dummy Shopping App using rails with api
+# Rails Shop App API
 
 * Rails-7.0.3.1
 

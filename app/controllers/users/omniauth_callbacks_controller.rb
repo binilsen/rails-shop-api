@@ -6,12 +6,22 @@ module Users
     def google_oauth2
       @user = User.from_omniauth(request.env['omniauth.auth'])
       if @user.persisted?
-        flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
-        sign_in_and_redirect @user, event: :authentication
+        sign_in @user
+        render json: { user: current_user,
+                       cart: current_user.carts.first.as_json(
+                         include:
+                        {
+                          products: { include: :unit }, carts_products: {}
+                        }
+                       ) }, status: :ok
       else
         session['devise.google.data'] = request.env['omniauth.auth'].expect('extra')
-        redirect_to new_user_registration_url, alert: @user.errors.full_messages.join('\n')
+        render json: { error: 'error occurred' }, status: :unauthorized
       end
+    end
+
+    def failure
+      render json: 'error', status: :unauthorized
     end
   end
 end
