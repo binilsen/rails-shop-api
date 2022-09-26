@@ -4,14 +4,16 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   field :email, type: String, default: ''
   field :encrypted_password, type: String, default: ''
   field :reset_password_token, type: String
   field :remember_created_at, type: DateTime
   field :reset_password_sent_at, type: DateTime
-
+  slug :email
   index({ email: 1 }, { unique: true, name: 'index_user_on_email' })
   index({ reset_password_token: 1 }, { unique: true, name: 'index_user_on_rpt' })
+  index({ slug: 1 }, { unique: true, name: 'index_user_on_slug' })
 
   include Mongoid::Locker
 
@@ -33,6 +35,6 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-
+  has_many :carts
   index({ uid: 1, provider: 1 }, { name: 'uid_provider_index', unique: true, background: true })
 end

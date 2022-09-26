@@ -44,6 +44,7 @@ gem 'mongoid-locker'
 # generate slug
 # gem 'friendly_id'
 
+gem 'graphql'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
