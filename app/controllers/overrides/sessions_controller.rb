@@ -3,7 +3,7 @@ class Overrides::SessionsController < DeviseTokenAuth::SessionsController
     if @resource
       render json: {
         success: true,
-        cart: current_user.carts.first.as_json(include: :carts_products),
+        cart: current_user.carts.order(created_at: :desc).find_by(proccessed: false).as_json(include: :carts_products),
         user: current_user
       }
     end

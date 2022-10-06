@@ -16,12 +16,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/temp
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
-
+database.env
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep

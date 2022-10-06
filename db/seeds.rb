@@ -30,3 +30,9 @@ Product.create(name: 'boAt Storm Pro',
                title: 'The boAt Storm Pro Call is the perfect companion for your fitness transformation and is here to make life easy. Your Storm Pro Call will remove all obstructions that may come on your goal achieving path.', stock: 5, price: 3499.0, thumbnail: 'https://rukminim1.flixcart.com/image/832/832/xif0q/smartwatch/v/s/f/-original-imaghteut6shcwsz.jpeg?q=70', category: Category.last)
 Product.create(name: 'Fire-Boltt Wonder',
                title: 'Fire-Boltt Wonder Smartwatch is a Bluetooth calling enabled wristwatch that comes with an inbuilt speaker and mic for HD calls and seamless music experience.', stock: 5, price: 3999.0, thumbnail: 'https://rukminim1.flixcart.com/image/832/832/l5h2xe80/smartwatch/u/2/z/1-8-bsw047-android-ios-fire-boltt-yes-original-imagg52h8cdmppbx.jpeg?q=70', category: Category.last)
+
+#  address type
+AddressType.destroy_all
+AddressType.create(type: "Home", time: "7AM to 9PM")
+AddressType.create(type: "Office", time: "10AM to 5PM")
+AddressType.create(type: "Other", time: "8AM to 8PM")

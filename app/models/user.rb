@@ -36,5 +36,7 @@ class User
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
   has_many :carts
+  has_many :orders
+  has_many :addresses
   index({ uid: 1, provider: 1 }, { name: 'uid_provider_index', unique: true, background: true })
 end

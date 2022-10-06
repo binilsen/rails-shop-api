@@ -8,19 +8,19 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :all_products, [ProductType], null: false
-    field :all_categories, [CategoryType], null: false
+    field :products, [ProductType], null: false
+    field :categories, [CategoryType], null: false
     field :product, [ProductType], null: false do
       argument :slug, String, required: true
     end
     field :category_products, [ProductType], null: false do
       argument :slug, String, required: true
     end
-    def all_products
+    def products
       Product.all
     end
 
-    def all_categories
+    def categories
       Category.all
     end
 

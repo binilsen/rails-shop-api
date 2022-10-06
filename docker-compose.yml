@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    ports: 
+      - "27017:27017"
+    volumes:
+      - ./temp/db:/data/db
+    env_file:
+      - database.env

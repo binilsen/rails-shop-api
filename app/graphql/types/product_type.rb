@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Types
-  class ProductType < Types::BaseObject
+
+  class Types::ProductType < Types::BaseObject
     field :name, String, null: false
     field :title, String, null: false
     field :price, Float, null: false
@@ -10,4 +10,3 @@ module Types
     field :slug, String
     field :category, Types::CategoryType, null: false
   end
-end

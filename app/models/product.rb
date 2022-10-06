@@ -13,4 +13,5 @@ class Product
   slug :name
   belongs_to :category, foreign_key: :category_id
   has_many :carts_products
+  has_many :orders_products
 end
