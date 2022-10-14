@@ -7,7 +7,11 @@ module Api
       # GET /products
       def index
         @products = Product.all
-        render json: @products
+        render json: @products.as_json(include: :category)
+      end
+
+      def show
+        render json: Product.find(params[:id])
       end
     end
   end

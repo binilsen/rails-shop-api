@@ -9,7 +9,7 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 # postgres adapter
-gem 'pg'
+# gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -17,12 +17,34 @@ gem 'puma', '~> 5.0'
 # fix cors issue
 gem 'rack-cors'
 
+# API AUTH
+
 # jwt based devise authentication
-gem 'devise-jwt'
+gem 'devise_token_auth'
+
+# mongo gem locked at 2.18 for capability with  mongoid-locker
+gem 'mongo', '2.18'
+
+# locked version as mongoid 8 does not support mongoid-locker
+# mongodb connector
+gem 'mongoid', '~> 7.5', '>= 7.5.1'
+
+# for devise
+gem 'bson_ext'
+
+# mongoid slug creator
+gem 'mongoid-slug'
+
+# needed for devise-token-auth
+gem 'mongoid-locker'
 
 # active_storage validator
-gem 'active_storage_validations'
+# gem 'active_storage_validations'
 
+# generate slug
+# gem 'friendly_id'
+
+gem 'graphql'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
